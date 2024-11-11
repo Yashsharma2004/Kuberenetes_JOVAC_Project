@@ -1,6 +1,9 @@
 # Use CentOS 7 as the base image
 FROM centos:7
 
+RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
+
 # Maintainer information
 LABEL maintainer="yashsharma2004.mtr@gmail.com"
 
