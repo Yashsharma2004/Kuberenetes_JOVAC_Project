@@ -9,5 +9,5 @@ RUN unzip oxer.zip
 RUN cp -rvf oxer/* .
 RUN rm -rf oxer oxer.zip
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
-EXPOSE 80
+EXPOSE 80 443
 
