@@ -1,5 +1,5 @@
 FROM centos:7
-MAINTAINER yashsharma2004.mtr@gmail.com
+LABEL maintainer=" yashsharma2004.mtr@gmail.com"
 RUN yum install -y httpd \
  zip\
  unzip
