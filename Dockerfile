@@ -11,7 +11,7 @@ RUN yum install -y httpd \
     yum clean all
 
 # Download the zip file from the new URL
-ADD https://raw.githubusercontent.com/Yashsharma2004/Kuberenetes_JOVAC_Project/main/wave-cafe.zip /var/www/html/
+ADD https://raw.githubusercontent.com/Yashsharma2004/Kuberenetes_JOVAC_Project/main/Wave%20Cafe%20Free%20Website%20Template%20-%20Free-CSS.com.zip /var/www/html/
 
 # Set working directory
 WORKDIR /var/www/html/
@@ -21,7 +21,7 @@ RUN unzip wave-cafe.zip && \
     cp -rvf wave-cafe/* . && \
     rm -rf wave-cafe wave-cafe.zip
 
-# Start Apache HTTPD service in the foreground
+# StartApache HTTPD service in the foreground
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
 # Expose port 80 for HTTP traffic
