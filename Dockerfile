@@ -1,8 +1,11 @@
 FROM centos:7
 LABEL maintainer="yashsharma2004.mtr@gmail.com"
 
-# Install dependencies
-RUN yum install -y httpd zip unzip curl
+# Update the repositories to use reliable mirrors
+RUN sed -i 's|mirrorlist.centos.org|centos.mirror.triplehorn.org|g' /etc/yum.repos.d/CentOS-Base.repo
+
+# Install dependencies with retry mechanism
+RUN yum install -y httpd zip unzip curl || yum install -y httpd zip unzip curl
 
 # Download oxer.zip with retry mechanism using curl
 RUN curl -L --retry 5 --retry-delay 10 https://www.free-css.com/assets/files/free-css-templates/download/page296/oxer.zip -o /var/www/html/oxer.zip || echo "Failed to download oxer.zip"
@@ -21,5 +24,4 @@ RUN rm -rf oxer oxer.zip
 EXPOSE 80
 
 # Run Apache in the foreground
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"] 
-
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
